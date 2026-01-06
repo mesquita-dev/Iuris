@@ -17,19 +17,16 @@ export interface SelectProps
   icon?: "Info";
   hasIcon?: boolean;
   placeholder: string;
-  width?: string;
   hasHeading?: boolean;
   options: SelectOption[];
 }
 
 const getSelectClasses = (
   state: SelectState,
-  isFocused: boolean,
-  width?: string
+  isFocused: boolean
 ): string => {
-  const widthClass = width ? "" : "w-full";
   const baseClasses =
-    `${widthClass} px-3 py-3 font-sans font-normal text-base leading-5 rounded border transition-colors outline-none appearance-none pr-10`;
+    `w-full px-3 py-3 font-sans font-normal text-base leading-5 rounded border transition-colors outline-none appearance-none pr-10`;
 
   if (state === "disabled") {
     return `${baseClasses} border-gray-300 bg-gray-200 text-gray-500 cursor-not-allowed`;
@@ -53,7 +50,6 @@ export const Select = React.memo<SelectProps>(
     icon = "Info",
     hasIcon = false,
     placeholder,
-    width,
     hasHeading = true,
     options,
     className = "",
@@ -64,7 +60,7 @@ export const Select = React.memo<SelectProps>(
   }) => {
     const [isFocused, setIsFocused] = useState(false);
     const selectState = disabled ? "disabled" : state;
-    const selectClasses = getSelectClasses(selectState, isFocused, width);
+    const selectClasses = getSelectClasses(selectState, isFocused);
     const IconComponent = hasIcon && icon === "Info" ? Info : null;
 
     const handleFocus = (e: React.FocusEvent<HTMLSelectElement>) => {
@@ -77,14 +73,11 @@ export const Select = React.memo<SelectProps>(
       onBlur?.(e);
     };
 
-    const containerStyle = width ? { width } : {};
-    const selectStyle = width ? { width } : {};
-
     return (
-      <div style={containerStyle} className={`relative h-fit ${width ? "" : "w-full"}`}>
+      <div className="relative h-fit w-full min-w-fit">
         {hasHeading && (
           <div className="mb-3 flex h-5 items-center justify-between gap-3">
-            <label className="font-sans text-base font-medium leading-5 text-gray-800">
+            <label className="font-sans text-base font-medium leading-5 text-gray-800 whitespace-nowrap">
               {label}
             </label>
             {IconComponent && (
@@ -94,7 +87,6 @@ export const Select = React.memo<SelectProps>(
         )}
         <div className="relative">
           <select
-            style={selectStyle}
             className={`${selectClasses} ${className}`}
             disabled={disabled || selectState === "disabled"}
             onFocus={handleFocus}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Input } from "@/components/Input";
 import { Select } from "@/components/Select";
 import { Button } from "@/components/Button";
@@ -17,7 +17,6 @@ export default function PerfilPage() {
   const [tipoAtendimento, setTipoAtendimento] = useState<string>("");
   const [numeroFormacoes, setNumeroFormacoes] = useState<number>(1);
   const [areasAtuacao, setAreasAtuacao] = useState<string[]>([]);
-  const [gridColumns, setGridColumns] = useState<string>("1.2fr 2.1fr 2.2fr 0.7fr");
   const [cep, setCep] = useState<string>("");
   const [anoAtuacao, setAnoAtuacao] = useState<string>("");
   const [nome, setNome] = useState<string>("");
@@ -60,24 +59,6 @@ export default function PerfilPage() {
     }
   };
 
-  useEffect(() => {
-    const checkScreenSize = () => {
-      const width = window.innerWidth;
-      
-      if (width <= 1024) {
-        setGridColumns("1fr 1.8fr 1.9fr 0.6fr");
-      } else if (width <= 1366) {
-        setGridColumns("1.1fr 2fr 2.1fr 0.7fr");
-      } else {
-        setGridColumns("1.2fr 2.1fr 2.2fr 0.7fr");
-      }
-    };
-
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -146,29 +127,29 @@ export default function PerfilPage() {
         </div>
 
         <div className="flex flex-1 flex-wrap gap-6">
-          <div className="basis-[350px] flex-shrink-0">
+          <div className="w-full md:w-1/6 lg:w-1/6 min-w-fit">
             <Input
               state="default"
-              label="Nome completo"
+              label="Nome completo *"
               placeholder="Ex: Lucas Mesquita"
               type="text"
               value={nome}
               onChange={handleNomeChange}
             />
           </div>
-          <div className="basis-[172px] flex-shrink-0">
+          <div className="w-full md:w-1/8 lg:w-1/8 min-w-fit">
             <Input
               state="default"
-              label="Número da OAB"
+              label="Número da OAB *"
               placeholder="Ex: 80340"
               value={numeroOAB}
               onChange={handleNumeroOABChange}
             />
           </div>
-          <div className="basis-[134px] flex-shrink-0">
+          <div className="w-full md:w-1/12 lg:w-1/12 min-w-fit">
             <Select
               state="default"
-              label="Estado da OAB"
+              label="Estado da OAB *"
               placeholder="Ex: OAB"
               options={[
                 { value: "mg", label: "MG" },
@@ -177,11 +158,11 @@ export default function PerfilPage() {
               ]}
             />
           </div>
-          <div className="w-fit flex flex-col gap-3">
-            <label className="font-sans text-base font-medium leading-5 text-gray-800">
-              Tipo de atendimento
+          <div className="w-full md:w-auto lg:w-auto flex flex-col gap-3 min-w-fit">
+            <label className="font-sans text-base font-medium leading-5 text-gray-800 whitespace-nowrap">
+              Tipo de atendimento *
             </label>
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-wrap">
               <Pill
                 version="radio"
                 name="tipo-atendimento"
@@ -208,57 +189,56 @@ export default function PerfilPage() {
               />
             </div>
           </div>
-          <div className="w-fit">
+          <div className="w-full md:w-1/8 lg:w-1/8 min-w-fit">
             <Input
               state="default"
-              label="CEP"
+              label="CEP *"
               placeholder="Ex: 38080-140"
               value={cep}
               onChange={handleCepChange}
               maxLength={9}
-              width="150px"
             />
           </div>
-          <div className="basis-[299px] flex-shrink-0">
+          <div className="w-full md:w-1/5 lg:w-1/5 min-w-fit">
             <Input
               state="default"
-              label="Logradouro"
+              label="Logradouro *"
               placeholder="Ex: Rua Álvaro Henrique"
             />
           </div>
-          <div className="basis-[100px] flex-shrink-0">
+          <div className="w-full md:w-1/12 lg:w-1/12 min-w-fit">
             <Input
               state="default"
-              label="Número"
+              label="Número *"
               placeholder="Ex: 120"
               type="number"
             />
           </div>
-          <div className="basis-[250px] flex-shrink-0">
+          <div className="w-full md:w-1/8 lg:w-1/8 min-w-fit">
             <Input
               state="default"
               label="Complemento"
               placeholder="Ex: Uberaba"
             />
           </div>
-          <div className="basis-[250px] flex-shrink-0">
+          <div className="w-full md:w-1/6 lg:w-1/6 min-w-fit">
             <Input
               state="default"
-              label="Bairro"
+              label="Bairro *"
               placeholder="Ex: Cássio Resende"
             />
           </div>
-          <div className="basis-[250px] flex-shrink-0">
+          <div className="w-full md:w-1/6 lg:w-1/6 min-w-fit">
             <Input
               state="default"
-              label="Cidade"
+              label="Cidade *"
               placeholder="Ex: Uberaba"
             />
           </div>
-          <div className="basis-[134px] flex-shrink-0">
+          <div className="w-full md:w-1/12 lg:w-1/12 min-w-fit">
             <Select
               state="default"
-              label="Estado (UF)"
+              label="Estado (UF) *"
               placeholder="Ex: MG"
               options={[
                 { value: "mg", label: "MG" },
@@ -267,10 +247,10 @@ export default function PerfilPage() {
               ]}
             />
           </div>
-          <div className="w-fit">
+          <div className="w-full md:w-1/6 lg:w-1/6 min-w-fit">
             <Input
               state="default"
-              label="Ano de início da atuação"
+              label="Ano de início da atuação *"
               placeholder="Ex: 2020"
               value={anoAtuacao}
               onChange={handleAnoAtuacaoChange}
@@ -289,80 +269,96 @@ export default function PerfilPage() {
             (máximo de até 3 formações)
           </span>
         </div>
-        <div className="grid gap-6 gap-y-4 items-start" style={{ gridTemplateColumns: gridColumns }}>
-          <Select
-            label="Tipo"
-            hasHeading={true}
-            placeholder=""
-            options={[
-              { value: "graduacao", label: "Graduação" },
-              { value: "pos-graduacao", label: "Pós-graduação" },
-              { value: "mestrado", label: "Mestrado" },
-              { value: "doutorado", label: "Doutorado" },
-            ]}
-            value="graduacao"
-            disabled
-          />
-          <Input
-            label="Título"
-            hasHeading={true}
-            hasIcon={false}
-            placeholder=""
-            value="Bacharelado em Direito"
-            disabled
-          />
-          <Input
-            label="Instituição"
-            hasHeading={true}
-            placeholder="Ex: Universidade de Uberaba"
-          />
-          <Input
-            label="Ano de conclusão"
-            hasHeading={true}
-            placeholder="Ex: 2022"
-            value={anosConclusao[0] || ""}
-            onChange={handleAnoConclusaoChange(0)}
-            maxLength={4}
-          />
+        <div className="flex flex-wrap gap-6 gap-y-4 items-start">
+          <div className="w-full md:w-1/6 lg:w-1/6 min-w-fit">
+            <Select
+              label="Tipo"
+              hasHeading={true}
+              placeholder=""
+              options={[
+                { value: "graduacao", label: "Graduação" },
+                { value: "pos-graduacao", label: "Pós-graduação" },
+                { value: "mestrado", label: "Mestrado" },
+                { value: "doutorado", label: "Doutorado" },
+              ]}
+              value="graduacao"
+              disabled
+            />
+          </div>
+          <div className="w-full md:w-1/4 lg:w-1/4 min-w-fit">
+            <Input
+              label="Título"
+              hasHeading={true}
+              hasIcon={false}
+              placeholder=""
+              value="Bacharelado em Direito"
+              disabled
+            />
+          </div>
+          <div className="w-full md:w-1/4 lg:w-1/4 min-w-fit">
+            <Input
+              label="Instituição"
+              hasHeading={true}
+              placeholder="Ex: Universidade de Uberaba"
+            />
+          </div>
+          <div className="w-full md:w-1/12 lg:w-1/12 min-w-fit">
+            <Input
+              label="Ano de conclusão"
+              hasHeading={true}
+              placeholder="Ex: 2022"
+              value={anosConclusao[0] || ""}
+              onChange={handleAnoConclusaoChange(0)}
+              maxLength={4}
+            />
+          </div>
           {Array.from({ length: numeroFormacoes - 1 }).map((_, index) => (
             <React.Fragment key={index}>
-              <Select
-                state="default"
-                label=""
-                hasHeading={false}
-                placeholder="Pós-graduação"
-                options={[
-                  { value: "graduacao", label: "Graduação" },
-                  { value: "pos-graduacao", label: "Pós-graduação" },
-                  { value: "mestrado", label: "Mestrado" },
-                  { value: "doutorado", label: "Doutorado" },
-                ]}
-              />
-              <Input
-                state="default"
-                label=""
-                hasHeading={false}
-                placeholder="Ex: Direito de Família e Sucessões"
-              />
-              <Input
-                state="default"
-                label=""
-                hasHeading={false}
-                placeholder="Ex: PUC Minas"
-              />
-              <Input
-                state="default"
-                label=""
-                hasHeading={false}
-                placeholder="Ex: 2024"
-                value={anosConclusao[index + 1] || ""}
-                onChange={handleAnoConclusaoChange(index + 1)}
-                maxLength={4}
-              />
+              <div className="w-full md:w-1/6 lg:w-1/6 min-w-fit">
+                <Select
+                  state="default"
+                  label=""
+                  hasHeading={false}
+                  placeholder="Pós-graduação"
+                  options={[
+                    { value: "graduacao", label: "Graduação" },
+                    { value: "pos-graduacao", label: "Pós-graduação" },
+                    { value: "mestrado", label: "Mestrado" },
+                    { value: "doutorado", label: "Doutorado" },
+                  ]}
+                />
+              </div>
+              <div className="w-full md:w-1/4 lg:w-1/4 min-w-fit">
+                <Input
+                  state="default"
+                  label=""
+                  hasHeading={false}
+                  placeholder="Ex: Direito de Família e Sucessões"
+                />
+              </div>
+              <div className="w-full md:w-1/4 lg:w-1/4 min-w-fit">
+                <Input
+                  state="default"
+                  label=""
+                  hasHeading={false}
+                  placeholder="Ex: PUC Minas"
+                />
+              </div>
+              <div className="w-full md:w-1/12 lg:w-1/12 min-w-fit">
+                <Input
+                  state="default"
+                  label=""
+                  hasHeading={false}
+                  placeholder="Ex: 2024"
+                  value={anosConclusao[index + 1] || ""}
+                  onChange={handleAnoConclusaoChange(index + 1)}
+                  maxLength={4}
+                />
+              </div>
             </React.Fragment>
           ))}
           {numeroFormacoes < 3 && (
-            <div className="flex justify-start" style={{ gridColumn: "span 2" }}>
+            <div className="w-full md:w-1/3 lg:w-1/3 flex justify-start">
               <Button
                 variant="outline"
                 theme="primary"
