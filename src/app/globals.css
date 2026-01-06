@@ -8,8 +8,88 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair-display);
+  --color-base-black: #000000;
+  --color-base-white: #ffffff;
+  --color-gray-100: #f7f7f7;
+  --color-gray-200: #ebebeb;
+  --color-gray-300: #d1d1d1;
+  --color-gray-400: #b8b8b8;
+  --color-gray-500: #9e9e9e;
+  --color-gray-600: #858585;
+  --color-gray-700: #6b6b6b;
+  --color-gray-800: #606060;
+  --color-gray-900: #383838;
+  --color-gray-1000: #1f1f1f;
+  --color-red-100: #fff0f0;
+  --color-red-200: #ffd6d6;
+  --color-red-300: #ffa3a3;
+  --color-red-400: #ff7070;
+  --color-red-500: #ff3d3d;
+  --color-red-600: #ff0a0a;
+  --color-red-700: #d40000;
+  --color-red-800: #a30000;
+  --color-red-900: #700000;
+  --color-red-1000: #3d0000;
+  --color-green-100: #f3fbf4;
+  --color-green-200: #e0f5e3;
+  --color-green-300: #b9e9c0;
+  --color-green-400: #92dd9c;
+  --color-green-500: #6cd079;
+  --color-green-600: #45c456;
+  --color-green-700: #33a142;
+  --color-green-800: #277c32;
+  --color-green-900: #1b5523;
+  --color-green-1000: #0f2f13;
+  --color-blue-100: #f3f7fc;
+  --color-blue-200: #deebf7;
+  --color-blue-300: #b5d1ee;
+  --color-blue-400: #8bb8e4;
+  --color-blue-500: #629eda;
+  --color-blue-600: #3885d1;
+  --color-blue-700: #286aac;
+  --color-blue-800: #1f5284;
+  --color-blue-900: #15385b;
+  --color-blue-1000: #0c1f32;
+  --color-yellow-100: #fefcf1;
+  --color-yellow-200: #fbf7da;
+  --color-yellow-300: #f7edab;
+  --color-yellow-400: #f2e37d;
+  --color-yellow-500: #eed84f;
+  --color-yellow-600: #e9ce20;
+  --color-yellow-700: #c1aa13;
+  --color-yellow-800: #95830f;
+  --color-yellow-900: #665a0a;
+  --color-yellow-1000: #383106;
+  --spacing-none: 0px;
+  --spacing-quarter: 1px;
+  --spacing-half: 2px;
+  --spacing-x1: 4px;
+  --spacing-x2: 8px;
+  --spacing-x3: 12px;
+  --spacing-x4: 16px;
+  --spacing-x5: 20px;
+  --spacing-x6: 24px;
+  --spacing-x7: 28px;
+  --spacing-x8: 32px;
+  --spacing-x9: 36px;
+  --spacing-x10: 40px;
+  --spacing-x11: 44px;
+  --spacing-x12: 48px;
+  --spacing-x13: 52px;
+  --spacing-x14: 56px;
+  --spacing-x15: 60px;
+  --spacing-x16: 64px;
+  --spacing-py14: 14px;
+  --radius-none: 0px;
+  --radius-x1: 2px;
+  --radius-x2: 4px;
+  --radius-x4: 8px;
+  --radius-x6: 12px;
+  --radius-x8: 16px;
+  --radius-x12: 24px;
+  --radius-x1000: 999px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +100,7 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--color-gray-100);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
