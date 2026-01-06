@@ -23,7 +23,7 @@ const getInputClasses = (
 ): string => {
   const widthClass = width ? "" : "w-full";
   const baseClasses =
-    `${widthClass} px-x3 py-[13px] font-sans font-normal text-[1rem] leading-[1.25rem] rounded-x2 border transition-colors outline-none`;
+    `${widthClass} px-3 py-3 font-sans font-normal text-base leading-5 rounded border transition-colors outline-none`;
 
   if (state === "disabled") {
     return `${baseClasses} border-gray-300 bg-gray-200 text-gray-500 placeholder:text-gray-400 cursor-not-allowed`;
@@ -76,8 +76,8 @@ export const Input = React.memo<InputProps>(
     return (
       <div style={containerStyle} className={`h-fit ${width ? "" : "w-full"}`}>
         {hasHeading && (
-          <div className="mb-x3 flex h-[20px] items-center justify-between gap-x3">
-            <label className="font-sans text-[1rem] font-medium leading-[1.25rem] text-gray-800">
+          <div className="mb-3 flex h-5 items-center justify-between gap-3">
+            <label className="font-sans text-base font-medium leading-5 text-gray-800">
               {label}
             </label>
             {IconComponent && (

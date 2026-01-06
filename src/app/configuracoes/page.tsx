@@ -48,30 +48,30 @@ export default function ConfiguracoesPage() {
     switch (activeTab) {
       case "plano-pagamento":
         return (
-          <div className="flex flex-col lg:flex-row lg:justify-between gap-x6">
-            <div className="flex flex-col gap-x6">
-              <h2 className="font-sans text-[1.5rem] font-semibold leading-[2rem] text-base-black">
+          <div className="flex flex-col lg:flex-row lg:justify-between gap-6">
+            <div className="flex flex-col gap-6">
+              <h2 className="font-sans text-xl font-semibold leading-8 text-base-black">
                 Informações do plano
               </h2>
               <div className="flex gap-[64px]">
-              <div className="flex flex-col gap-x2">
-                <span className="font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black">
+              <div className="flex flex-col gap-2">
+                <span className="font-sans text-base font-normal leading-5 text-base-black">
                   Plano
                 </span>
-                <p className="font-sans text-[1.25rem] font-medium leading-[1.5rem] text-base-black">
+                <p className="font-sans text-lg font-medium leading-6 text-base-black">
                   Gratuito
                 </p>
               </div>
-              <div className="flex flex-col gap-x2">
-                <span className="font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black">
+              <div className="flex flex-col gap-2">
+                <span className="font-sans text-base font-normal leading-5 text-base-black">
                   Valor do plano
                 </span>
-                <p className="font-sans text-[1.25rem] font-medium leading-[1.5rem] text-base-black">
+                <p className="font-sans text-lg font-medium leading-6 text-base-black">
                   R$ 0,00
                 </p>
               </div>
-              <div className="flex flex-col gap-x2">
-                <span className="font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black">
+              <div className="flex flex-col gap-2">
+                <span className="font-sans text-base font-normal leading-5 text-base-black">
                   Status da assinatura
                 </span>
                 <Badge
@@ -81,26 +81,26 @@ export default function ConfiguracoesPage() {
                   size="md"
                 />
               </div>
-              <div className="flex flex-col gap-x2">
-                <span className="font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black">
+              <div className="flex flex-col gap-2">
+                <span className="font-sans text-base font-normal leading-5 text-base-black">
                   Data da próxima cobrança
                 </span>
-                <p className="font-sans text-[1.25rem] font-medium leading-[1.5rem] text-base-black">
+                <p className="font-sans text-lg font-medium leading-6 text-base-black">
                   19/12/2025
                 </p>
               </div>
               </div>
             </div>
 
-            <div className="flex flex-col gap-x6">
+            <div className="flex flex-col gap-6">
               <div className="flex items-center gap-[120px]">
-                <h2 className="font-sans text-[1.5rem] font-semibold leading-[2rem] text-base-black">
+                <h2 className="font-sans text-xl font-semibold leading-8 text-base-black">
                   Forma de pagamento
                 </h2>
-                <div className="flex gap-x4">
+                <div className="flex gap-4">
                   <button
                     type="button"
-                    className="font-sans text-[1rem] font-normal leading-[1.25rem] text-red-600 hover:underline"
+                    className="font-sans text-base font-normal leading-5 text-red-600 hover:underline"
                   >
                     Cancelar assinatura
                   </button>
@@ -113,27 +113,27 @@ export default function ConfiguracoesPage() {
                 </div>
               </div>
               <div className="flex gap-[120px]">
-                <div className="flex flex-col gap-x2">
-                  <span className="font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black">
+                <div className="flex flex-col gap-2">
+                  <span className="font-sans text-base font-normal leading-5 text-base-black">
                     Tipo
                   </span>
-                  <p className="font-sans text-[1.25rem] font-medium leading-[1.5rem] text-base-black">
+                  <p className="font-sans text-lg font-medium leading-6 text-base-black">
                     Cartão de crédito
                   </p>
                 </div>
-                <div className="flex flex-col gap-x2">
-                  <span className="font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black">
+                <div className="flex flex-col gap-2">
+                  <span className="font-sans text-base font-normal leading-5 text-base-black">
                     Cartão
                   </span>
-                  <p className="font-sans text-[1.25rem] font-medium leading-[1.5rem] text-base-black">
+                  <p className="font-sans text-lg font-medium leading-6 text-base-black">
                     Visa **** 1234
                   </p>
                 </div>
-                <div className="flex flex-col gap-x2">
-                  <span className="font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black">
+                <div className="flex flex-col gap-2">
+                  <span className="font-sans text-base font-normal leading-5 text-base-black">
                     Validade
                   </span>
-                  <p className="font-sans text-[1.25rem] font-medium leading-[1.5rem] text-base-black">
+                  <p className="font-sans text-lg font-medium leading-6 text-base-black">
                     08/26
                   </p>
                 </div>
@@ -200,29 +200,29 @@ export default function ConfiguracoesPage() {
 
         return (
           <div>
-            <h2 className="font-sans text-[1.5rem] font-semibold leading-[2rem] text-base-black mb-x4">
+            <h2 className="font-sans text-xl font-semibold leading-8 text-base-black mb-4">
               Seu histórico de pagamento
             </h2>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
                   <tr>
-                    <th className="text-left py-x3 px-x4 font-sans text-[1rem] font-medium leading-[1.25rem] text-base-black">
+                    <th className="text-left py-3 px-4 font-sans text-base font-medium leading-5 text-base-black">
                       Data do pagamento
                     </th>
-                    <th className="text-left py-x3 px-x4 font-sans text-[1rem] font-medium leading-[1.25rem] text-base-black">
+                    <th className="text-left py-3 px-4 font-sans text-base font-medium leading-5 text-base-black">
                       Período
                     </th>
-                    <th className="text-left py-x3 px-x4 font-sans text-[1rem] font-medium leading-[1.25rem] text-base-black">
+                    <th className="text-left py-3 px-4 font-sans text-base font-medium leading-5 text-base-black">
                       Valor pago
                     </th>
-                    <th className="text-left py-x3 px-x4 font-sans text-[1rem] font-medium leading-[1.25rem] text-base-black">
+                    <th className="text-left py-3 px-4 font-sans text-base font-medium leading-5 text-base-black">
                       Status
                     </th>
-                    <th className="text-left py-x3 px-x4 font-sans text-[1rem] font-medium leading-[1.25rem] text-base-black">
+                    <th className="text-left py-3 px-4 font-sans text-base font-medium leading-5 text-base-black">
                       Forma de pagamento
                     </th>
-                    <th className="text-left py-x3 px-x4 font-sans text-[1rem] font-medium leading-[1.25rem] text-base-black">
+                    <th className="text-left py-3 px-4 font-sans text-base font-medium leading-5 text-base-black">
                       Recibo
                     </th>
                   </tr>
@@ -230,22 +230,22 @@ export default function ConfiguracoesPage() {
                 <tbody>
                   {pagamentos.map((pagamento, index) => (
                     <tr key={index}>
-                      <td className="py-x4 px-x4 font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black">
+                      <td className="py-4 px-4 font-sans text-base font-normal leading-5 text-base-black">
                         {pagamento.data}
                       </td>
-                      <td className="py-x4 px-x4 font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black">
+                      <td className="py-4 px-4 font-sans text-base font-normal leading-5 text-base-black">
                         {pagamento.periodo}
                       </td>
-                      <td className="py-x4 px-x4 font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black">
+                      <td className="py-4 px-4 font-sans text-base font-normal leading-5 text-base-black">
                         {pagamento.valor}
                       </td>
-                      <td className="py-x4 px-x4">
+                      <td className="py-4 px-4">
                         {getStatusBadge(pagamento.status)}
                       </td>
-                      <td className="py-x4 px-x4 font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black">
+                      <td className="py-4 px-4 font-sans text-base font-normal leading-5 text-base-black">
                         {pagamento.formaPagamento}
                       </td>
-                      <td className="py-x4 px-x4">
+                      <td className="py-4 px-4">
                         {pagamento.temRecibo ? (
                           <Button
                             variant="outline"
@@ -256,7 +256,7 @@ export default function ConfiguracoesPage() {
                             hasIconLeft={true}
                           />
                         ) : (
-                          <span className="font-sans text-[1rem] font-normal leading-[1.25rem] text-gray-400">
+                          <span className="font-sans text-base font-normal leading-5 text-gray-400">
                             -
                           </span>
                         )}
@@ -271,17 +271,17 @@ export default function ConfiguracoesPage() {
       case "minha-conta":
         return (
           <div className="flex flex-col gap-[48px]">
-            <div className="flex flex-col gap-x4">
-              <h2 className="font-sans text-[1.5rem] font-semibold leading-[2rem] text-base-black">
+            <div className="flex flex-col gap-4">
+              <h2 className="font-sans text-xl font-semibold leading-8 text-base-black">
                 Dados da conta
               </h2>
               <div className="flex gap-[80px]">
-                <div className="flex items-start justify-between gap-x8">
-                  <div className="flex flex-col gap-x2">
-                    <span className="font-sans text-[1.25rem] font-medium leading-[1.5rem] text-base-black">
+                <div className="flex items-start justify-between gap-8">
+                  <div className="flex flex-col gap-2">
+                    <span className="font-sans text-lg font-medium leading-6 text-base-black">
                       Email
                     </span>
-                    <p className="font-sans text-[1.25rem] font-normal leading-[1.5rem] text-base-black">
+                    <p className="font-sans text-lg font-normal leading-6 text-base-black">
                       lmesquita2k@gmail.com
                     </p>
                   </div>
@@ -293,9 +293,9 @@ export default function ConfiguracoesPage() {
                   />
                 </div>
                 <div className="flex items-start justify-between gap-[104px]">
-                  <div className="flex flex-col gap-x2">
-                    <div className="flex items-center gap-x2 w-fit">
-                      <span className="font-sans text-[1.25rem] font-medium leading-[1.5rem] text-base-black">
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-2 w-fit">
+                      <span className="font-sans text-lg font-medium leading-6 text-base-black">
                         Senha
                       </span>
                       <button
@@ -310,7 +310,7 @@ export default function ConfiguracoesPage() {
                         )}
                       </button>
                     </div>
-                    <p className="font-sans text-[1.25rem] font-normal leading-[1.5rem] text-base-black">
+                    <p className="font-sans text-lg font-normal leading-6 text-base-black">
                       {showPassword ? "minhasenha123" : "************"}
                     </p>
                   </div>
@@ -321,27 +321,27 @@ export default function ConfiguracoesPage() {
                     label="Alterar senha"
                   />
                 </div>
-                <div className="flex flex-col gap-x2">
-                    <span className="font-sans text-[1.25rem] font-medium leading-[1.5rem] text-base-black">
+                <div className="flex flex-col gap-2">
+                    <span className="font-sans text-lg font-medium leading-6 text-base-black">
                     Data de criação da conta
                   </span>
-                    <p className="font-sans text-[1.25rem] font-normal leading-[1.5rem] text-base-black">
+                    <p className="font-sans text-lg font-normal leading-6 text-base-black">
                     22/12/2025
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col gap-x4">
-              <h2 className="font-sans text-[1.5rem] font-semibold leading-[2rem] text-base-black">
+            <div className="flex flex-col gap-4">
+              <h2 className="font-sans text-xl font-semibold leading-8 text-base-black">
                 Preferências
               </h2>
               <div className="flex flex-row gap-[40px] flex-wrap">
-                <div className="flex flex-col gap-x4">
-                  <h3 className="font-sans text-[1.5rem] font-medium leading-[1.75rem] text-base-black">
+                <div className="flex flex-col gap-4">
+                  <h3 className="font-sans text-xl font-medium leading-7 text-base-black">
                     Notificações sobre novos pedidos de reunião
                   </h3>
-                  <div className="flex gap-x4">
+                  <div className="flex gap-4">
                     <Pill
                       version="checkbox"
                       label="Receber por e-mail"
@@ -362,11 +362,11 @@ export default function ConfiguracoesPage() {
                     />
                   </div>
                 </div>
-                <div className="flex flex-col gap-x4">
-                  <h3 className="font-sans text-[1.5rem] font-medium leading-[1.75rem] text-base-black">
+                <div className="flex flex-col gap-4">
+                  <h3 className="font-sans text-xl font-medium leading-7 text-base-black">
                     Notificações sobre problemas no pagamento
                   </h3>
-                  <div className="flex gap-x4">
+                  <div className="flex gap-4">
                     <Pill
                       version="checkbox"
                       label="Receber por e-mail"
@@ -391,10 +391,10 @@ export default function ConfiguracoesPage() {
             </div>
 
             <div className="flex flex-col">
-              <h2 className="font-sans text-[1.5rem] font-semibold leading-[2rem] text-base-black mb-x2">
+              <h2 className="font-sans text-xl font-semibold leading-8 text-base-black mb-2">
                 Encerramento de conta
               </h2>
-              <p className="font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black mb-x4">
+              <p className="font-sans text-base font-normal leading-5 text-base-black mb-4">
                 Ao solicitar a exclusão, seus dados serão removidos conforme nossa Política de Privacidade, exceto informações que somos obrigados a manter por lei.
               </p>
               <Button
@@ -413,7 +413,7 @@ export default function ConfiguracoesPage() {
   };
 
   return (
-    <div className="bg-base-white p-x4 rounded-x2">
+    <div className="bg-base-white p-4 rounded">
       <Tabs
         tabs={tabs}
         activeTabId={activeTab}

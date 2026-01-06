@@ -102,19 +102,19 @@ export default function PerfilPage() {
   };
 
   return (
-    <div className="bg-base-white p-x4 rounded-x2">
-      <div className="mb-x6">
-        <h1 className="mb-x2 font-sans text-[2rem] font-semibold leading-[2.5rem] text-base-black">
+    <div className="bg-base-white p-4 rounded">
+      <div className="mb-6">
+        <h1 className="mb-2 font-sans text-2xl font-semibold leading-10 text-base-black">
           Personalize o seu perfil
         </h1>
-        <p className="font-sans text-[1rem] font-normal leading-[1.25rem] text-gray-600">
+        <p className="font-sans text-base font-normal leading-5 text-gray-600">
           Essa é uma parte bem importante, é aqui onde você criará o seu perfil para as pessoas.
         </p>
       </div>
 
-      <div className="mb-x8 flex items-start">
-        <div className="mr-x6 flex flex-col items-center">
-          <div className="mb-x3 h-[120px] w-[120px] overflow-hidden rounded-x1000 bg-gray-200">
+      <div className="mb-8 flex items-start">
+        <div className="mr-6 flex flex-col items-center">
+          <div className="mb-3 h-[120px] w-[120px] overflow-hidden rounded-full bg-gray-200">
             {profileImage ? (
               <img
                 src={profileImage}
@@ -145,7 +145,7 @@ export default function PerfilPage() {
           />
         </div>
 
-        <div className="flex flex-1 flex-wrap gap-x6">
+        <div className="flex flex-1 flex-wrap gap-6">
           <div className="basis-[350px] flex-shrink-0">
             <Input
               state="default"
@@ -177,11 +177,11 @@ export default function PerfilPage() {
               ]}
             />
           </div>
-          <div className="w-fit flex flex-col gap-x3">
-            <label className="font-sans text-[1rem] font-medium leading-[1.25rem] text-gray-800">
+          <div className="w-fit flex flex-col gap-3">
+            <label className="font-sans text-base font-medium leading-5 text-gray-800">
               Tipo de atendimento
             </label>
-            <div className="flex gap-x4">
+            <div className="flex gap-4">
               <Pill
                 version="radio"
                 name="tipo-atendimento"
@@ -280,16 +280,16 @@ export default function PerfilPage() {
         </div>
       </div>
 
-      <div className="my-x12">
-        <div className="mb-x4 flex items-center gap-x2">
-          <h2 className="font-sans text-[1.5rem] font-semibold leading-[2rem] text-base-black">
+      <div className="my-12">
+        <div className="mb-4 flex items-center gap-2">
+          <h2 className="font-sans text-xl font-semibold leading-8 text-base-black">
             Formação acadêmica
           </h2>
-          <span className="font-sans text-[1rem] font-normal leading-[1.25rem] text-gray-600">
+          <span className="font-sans text-base font-normal leading-5 text-gray-600">
             (máximo de até 3 formações)
           </span>
         </div>
-        <div className="grid gap-x6 gap-y-x4 items-start" style={{ gridTemplateColumns: gridColumns }}>
+        <div className="grid gap-6 gap-y-4 items-start" style={{ gridTemplateColumns: gridColumns }}>
           <Select
             label="Tipo"
             hasHeading={true}
@@ -377,14 +377,14 @@ export default function PerfilPage() {
         </div>
       </div>
 
-      <div className="my-x12">
-        <h2 className="font-sans text-[1.5rem] font-semibold leading-[2rem] text-base-black">
+      <div className="my-12">
+        <h2 className="font-sans text-xl font-semibold leading-8 text-base-black">
           Selecione as áreas de atuação
         </h2>
-        <p className="mt-x2 mb-x4 font-sans text-[1rem] font-normal leading-[1.25rem] text-gray-600">
+        <p className="mt-2 mb-4 font-sans text-base font-normal leading-5 text-gray-600">
           Selecione apenas áreas em que você atua regularmente. Máximo de 3 áreas de atuação.
         </p>
-        <div className="flex flex-wrap gap-x4">
+        <div className="flex flex-wrap gap-4">
           <Pill
             version="checkbox"
             value="direito-trabalho"
@@ -427,9 +427,9 @@ export default function PerfilPage() {
         </div>
       </div>
 
-      <div className="my-x8 flex flex-col gap-x2">
+      <div className="my-8 flex flex-col gap-2">
         <Checkbox size="lg" label="Declaro que as informações seguem as normas do Código de Ética da OAB. *" />
-        <p className="font-sans text-[1rem] font-normal leading-[1.25rem] text-gray-600">
+        <p className="font-sans text-base font-normal leading-5 text-gray-600">
         O perfil é exclusivamente informativo e não constitui publicidade jurídica.
         </p>
       </div>

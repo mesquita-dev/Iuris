@@ -20,8 +20,8 @@ const getCheckboxClasses = (
   isCheckedDisabled: boolean,
   size: CheckboxSize
 ): string => {
-  const sizeClasses = size === "md" ? "h-x5 w-x5" : "h-x7 w-x7";
-  const baseClasses = `flex ${sizeClasses} items-center justify-center rounded-x2 border transition-colors`;
+  const sizeClasses = size === "md" ? "h-5 w-5" : "h-7 w-7";
+  const baseClasses = `flex ${sizeClasses} items-center justify-center rounded border transition-colors`;
 
   if (isCheckedDisabled) {
     return `${baseClasses} border-gray-300 bg-gray-200 cursor-not-allowed`;
@@ -65,11 +65,11 @@ export const Checkbox = React.memo<CheckboxProps>(
 
     const checkboxClasses = getCheckboxClasses(isChecked, isDisabled, isCheckedDisabled, size);
     const labelClasses = size === "md"
-      ? `font-sans text-[1rem] font-normal leading-[1.25rem]`
-      : `font-sans text-[1.25rem] font-medium leading-[1.5rem]`;
+      ? `font-sans text-base font-normal leading-5`
+      : `font-sans text-lg font-medium leading-6`;
 
     return (
-      <label className={`flex items-center gap-x2 ${isDisabled ? "cursor-not-allowed" : "cursor-pointer"} ${className}`}>
+      <label className={`flex items-center gap-2 ${isDisabled ? "cursor-not-allowed" : "cursor-pointer"} ${className}`}>
         <div className={checkboxClasses}>
           {isChecked && (
             <Check size={size === "md" ? 12 : 16} weight="regular" className={isCheckedDisabled ? "text-gray-400" : "text-base-white"} />

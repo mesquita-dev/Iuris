@@ -19,7 +19,7 @@ export interface TabsProps {
 }
 
 const getTabClasses = (state: TabState): string => {
-  const baseClasses = "flex items-center gap-x2 px-x5 py-[14px] font-sans text-[1rem] font-normal leading-[1.25rem] transition-colors cursor-pointer rounded-x1000 h-12";
+  const baseClasses = "flex items-center gap-2 px-5 py-3.5 font-sans text-base font-normal leading-5 transition-colors cursor-pointer rounded-full h-12";
 
   if (state === "active") {
     return `${baseClasses} bg-base-black text-base-white`;
@@ -49,7 +49,7 @@ export const Tabs = React.memo<TabsProps>(
     };
 
     return (
-      <div className="flex items-center gap-x4 mb-x6">
+      <div className="flex items-center gap-4 mb-6">
         {tabs.map((tab) => {
           const state: TabState = currentActiveTab === tab.id ? "active" : "default";
           const Icon = tab.hasIcon && tab.icon ? tab.icon : null;

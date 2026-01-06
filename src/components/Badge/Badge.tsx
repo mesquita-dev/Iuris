@@ -14,12 +14,12 @@ export interface BadgeProps {
 }
 
 const getBadgeClasses = (status: BadgeStatus, size: BadgeSize): string => {
-  let baseClasses = "inline-flex items-center gap-x2 rounded-x2 font-sans font-medium w-fit";
+  let baseClasses = "inline-flex items-center gap-2 rounded font-sans font-medium w-fit";
 
   if (size === "md") {
-    baseClasses += " px-x3 py-[8px] text-[0.875rem] leading-[1rem]";
+    baseClasses += " px-3 py-2 text-sm leading-4";
   } else {
-    baseClasses += " px-x4 py-[10px] text-[1rem] leading-[1.25rem]";
+    baseClasses += " px-4 py-2.5 text-base leading-5";
   }
 
   switch (status) {

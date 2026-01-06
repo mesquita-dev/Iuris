@@ -29,7 +29,7 @@ const getSelectClasses = (
 ): string => {
   const widthClass = width ? "" : "w-full";
   const baseClasses =
-    `${widthClass} px-x3 py-[13px] font-sans font-normal text-[1rem] leading-[1.25rem] rounded-x2 border transition-colors outline-none appearance-none pr-x10`;
+    `${widthClass} px-3 py-3 font-sans font-normal text-base leading-5 rounded border transition-colors outline-none appearance-none pr-10`;
 
   if (state === "disabled") {
     return `${baseClasses} border-gray-300 bg-gray-200 text-gray-500 cursor-not-allowed`;
@@ -83,8 +83,8 @@ export const Select = React.memo<SelectProps>(
     return (
       <div style={containerStyle} className={`relative h-fit ${width ? "" : "w-full"}`}>
         {hasHeading && (
-          <div className="mb-x3 flex h-[20px] items-center justify-between gap-x3">
-            <label className="font-sans text-[1rem] font-medium leading-[1.25rem] text-gray-800">
+          <div className="mb-3 flex h-5 items-center justify-between gap-3">
+            <label className="font-sans text-base font-medium leading-5 text-gray-800">
               {label}
             </label>
             {IconComponent && (
@@ -110,7 +110,7 @@ export const Select = React.memo<SelectProps>(
               </option>
             ))}
           </select>
-          <div className="pointer-events-none absolute right-x3 top-1/2 -translate-y-1/2">
+          <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2">
             <CaretDown size={20} weight="regular" className="text-gray-600" />
           </div>
         </div>

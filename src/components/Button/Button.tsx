@@ -26,17 +26,17 @@ const getButtonClasses = (
   theme: ButtonTheme,
   size: ButtonSize
 ): string => {
-  const baseClasses = "inline-flex items-center justify-center gap-x2 font-sans font-normal text-[1rem] leading-[1.25rem] rounded-x2 transition-colors cursor-pointer box-border";
+  const baseClasses = "inline-flex items-center justify-center gap-2 font-sans font-normal text-base leading-5 rounded transition-colors cursor-pointer box-border";
   const paddingClasses = {
     lg: {
-      fill: "px-x4 py-py14",
-      outline: "px-x4 py-[0.8125rem]",
-      ghost: "px-x4 py-py14",
+      fill: "px-4 py-3.5",
+      outline: "px-4 py-3",
+      ghost: "px-4 py-3.5",
     },
     md: {
-      fill: "px-x3 py-[0.625rem]",
-      outline: "px-x3 py-[0.5625rem]",
-      ghost: "px-x3 py-[0.625rem]",
+      fill: "px-3 py-2.5",
+      outline: "px-3 py-2",
+      ghost: "px-3 py-2.5",
     },
   };
   const variantThemeClasses = {

@@ -18,7 +18,7 @@ export interface PillProps {
 }
 
 const getPillClasses = (state: PillState): string => {
-  const baseClasses = "inline-flex items-center gap-x2 px-x6 py-py14 rounded-x1000 font-sans text-[1rem] font-normal leading-[1.25rem] transition-colors w-fit whitespace-nowrap box-border";
+  const baseClasses = "inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-sans text-base font-normal leading-5 transition-colors w-fit whitespace-nowrap box-border";
 
   if (state === "active") {
     return `${baseClasses} bg-base-white border border-base-black text-base-black`;
@@ -28,7 +28,7 @@ const getPillClasses = (state: PillState): string => {
 };
 
 const getCheckboxClasses = (isChecked: boolean, isDisabled: boolean): string => {
-  const baseClasses = "flex h-x5 w-x5 items-center justify-center rounded-x2 border transition-colors";
+  const baseClasses = "flex h-5 w-5 items-center justify-center rounded border transition-colors";
 
   if (isDisabled) {
     return `${baseClasses} border-gray-300 bg-gray-200`;
@@ -42,7 +42,7 @@ const getCheckboxClasses = (isChecked: boolean, isDisabled: boolean): string => 
 };
 
 const getRadioClasses = (isSelected: boolean): string => {
-  const baseClasses = "flex h-x5 w-x5 items-center justify-center rounded-x1000 border transition-colors";
+  const baseClasses = "flex h-5 w-5 items-center justify-center rounded-full border transition-colors";
 
   if (isSelected) {
     return `${baseClasses} border-base-black`;
@@ -93,7 +93,7 @@ export const Pill = React.memo<PillProps>(
           <>
             <div className={getRadioClasses(isChecked)}>
               {isChecked && (
-                <div className="h-x2 w-x2 rounded-x1000 bg-base-black" />
+                <div className="h-2 w-2 rounded-full bg-base-black" />
               )}
             </div>
             <input

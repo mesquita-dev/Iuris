@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <MeetingRequestsProvider>
           <Header />
-          <main className="p-x6 bg-gray-100">
+          <main className="p-6 bg-gray-100">
             {children}
           </main>
         </MeetingRequestsProvider>

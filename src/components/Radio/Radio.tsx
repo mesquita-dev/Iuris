@@ -10,7 +10,7 @@ export interface RadioProps
 }
 
 const getRadioClasses = (isSelected: boolean): string => {
-  const baseClasses = "flex h-x5 w-x5 items-center justify-center rounded-x1000 border transition-colors";
+  const baseClasses = "flex h-5 w-5 items-center justify-center rounded-full border transition-colors";
 
   if (isSelected) {
     return `${baseClasses} border-base-black cursor-pointer`;
@@ -48,7 +48,7 @@ export const Radio = React.memo<RadioProps>(
       <label className={`flex items-center ${disabled ? "cursor-not-allowed" : "cursor-pointer"} ${className}`}>
         <div className={radioClasses}>
           {isSelected && (
-            <div className="h-x2 w-x2 rounded-x1000 bg-base-black" />
+            <div className="h-2 w-2 rounded-full bg-base-black" />
           )}
         </div>
         <input
@@ -61,7 +61,7 @@ export const Radio = React.memo<RadioProps>(
           className="sr-only"
           {...props}
         />
-        <span className={`font-sans text-[1.25rem] font-medium leading-[1.5rem] ${disabled ? "text-gray-500" : "text-base-black"}`}>
+        <span className={`font-sans text-lg font-medium leading-6 ${disabled ? "text-gray-500" : "text-base-black"}`}>
           {label}
         </span>
       </label>

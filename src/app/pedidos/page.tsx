@@ -52,14 +52,14 @@ export default function PedidosPage() {
   };
 
   return (
-    <div className="bg-base-white p-x4 rounded-x2">
-        <div className="flex items-center justify-between flex-wrap gap-x4 mb-x4">
-          <div className="flex items-center gap-x3">
-            <h1 className="font-sans text-[1.5rem] font-semibold leading-[2rem] text-base-black">
+    <div className="bg-base-white p-4 rounded">
+        <div className="flex items-center justify-between flex-wrap gap-4 mb-4">
+          <div className="flex items-center gap-3">
+            <h1 className="font-sans text-xl font-semibold leading-8 text-base-black">
               Pedidos de reunião
             </h1>
             {newRequestsCount > 0 && (
-              <span className="flex h-x6 w-x6 items-center justify-center rounded-x1000 bg-red-700 text-[0.75rem] font-sans font-bold leading-[0.75rem] text-base-white">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red-700 text-xs font-sans font-bold leading-3 text-base-white">
                 {newRequestsCount}
               </span>
             )}
@@ -68,7 +68,7 @@ export default function PedidosPage() {
             <button
               type="button"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="flex items-center gap-x2 px-x4 h-[2.5rem] border border-gray-300 rounded-x2 bg-base-white text-base-black font-sans text-[1rem] font-normal leading-[1.25rem] hover:bg-gray-100 transition-colors"
+              className="flex items-center gap-2 px-4 h-10 border border-gray-300 rounded bg-base-white text-base-black font-sans text-base font-normal leading-5 hover:bg-gray-100 transition-colors"
             >
               <span>Mais recentes</span>
               <CaretDown size={20} weight="regular" />
@@ -77,10 +77,10 @@ export default function PedidosPage() {
         </div>
 
         <div>
-          <p className="font-sans text-[1rem] font-normal leading-[1.25rem] text-base-black pb-x3">
+          <p className="font-sans text-base font-normal leading-5 text-base-black pb-3">
             Status
           </p>
-          <div className="flex items-center gap-x4 flex-wrap mb-x6">
+          <div className="flex items-center gap-4 flex-wrap mb-6">
             <Pill
               version="checkbox"
               label={`Novos (${getStatusCount("novos")})`}
@@ -102,63 +102,63 @@ export default function PedidosPage() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-x4">
+        <div className="flex flex-wrap gap-4">
             {filteredRequests.map((request) => (
               <div
                 key={request.id}
-                className="flex flex-col p-x4 border border-gray-300 rounded-x2 bg-base-white w-full md:max-w-[calc(50%-8px)] lg:max-w-[calc(25%-12px)]"
+                className="flex flex-col p-4 border border-gray-300 rounded bg-base-white w-full md:max-w-[calc(50%-8px)] lg:max-w-[calc(25%-12px)]"
               >
-                <div className="flex items-center justify-between mb-[1.25rem]">
+                <div className="flex items-center justify-between mb-5">
                   <div>{getStatusBadge(request.status)}</div>
-                  <span className="font-sans text-[1rem] font-normal leading-[1.25rem] text-gray-600">
+                  <span className="font-sans text-base font-normal leading-5 text-gray-600">
                     {request.receivedAt || request.scheduledAt || request.rejectedAt}
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between mb-x6">
-                  <div className="flex items-center gap-x2">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-2">
                     <CalendarDots size={24} weight="regular" className="text-gray-600" />
-                    <span className="font-sans text-[1rem] font-medium leading-[1.25rem] text-gray-600">
+                    <span className="font-sans text-base font-medium leading-5 text-gray-600">
                       {request.dateTime}
                     </span>
                   </div>
-                  <div className="flex items-center gap-x2">
+                  <div className="flex items-center gap-2">
                     {request.meetingType === "online" ? (
                       <Monitor size={24} weight="regular" className="text-gray-600" />
                     ) : (
                       <Building size={24} weight="regular" className="text-gray-600" />
                     )}
-                    <span className="font-sans text-[1rem] font-medium leading-[1.25rem] text-gray-600">
+                    <span className="font-sans text-base font-medium leading-5 text-gray-600">
                       {request.meetingType === "online" ? "Online" : "Presencial"}
                     </span>
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-x1 mb-x4">
-                  <p className="font-sans text-[0.875rem] font-medium leading-[1.125rem] text-gray-600">
+                <div className="flex flex-col gap-1 mb-4">
+                  <p className="font-sans text-sm font-medium leading-[18px] text-gray-600">
                     Assunto
                   </p>
-                  <h2 className="font-sans text-[1.5rem] font-medium leading-[1.75rem] text-base-black">
+                  <h2 className="font-sans text-xl font-medium leading-7 text-base-black">
                     {request.subject}
                   </h2>
                 </div>
-                <div className="flex flex-col gap-x1 mb-x8">
-                  <p className="font-sans text-[0.875rem] font-medium leading-[1.125rem] text-gray-600">
+                <div className="flex flex-col gap-1 mb-8">
+                  <p className="font-sans text-sm font-medium leading-[18px] text-gray-600">
                     Solicitante
                   </p>
                   <div className="flex items-center justify-between">
-                    <h3 className="font-sans text-[1.5rem] font-medium leading-[1.75rem] text-base-black">
+                    <h3 className="font-sans text-xl font-medium leading-7 text-base-black">
                       {request.requester}
                     </h3>
                     {request.isFirstContact && (
-                      <span className="px-x3 py-[0.25rem] rounded-x1000 bg-gray-200 text-gray-700 font-sans text-[0.875rem] font-normal leading-[1.25rem]">
+                      <span className="px-3 py-1 rounded-full bg-gray-200 text-gray-700 font-sans text-sm font-normal leading-5">
                         Primeiro contato
                       </span>
                     )}
                   </div>
                 </div>
 
-                <div className="flex gap-x4">
+                <div className="flex gap-4">
                   {request.status === "novo" && (
                     <>
                       <Button

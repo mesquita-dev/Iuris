@@ -73,18 +73,18 @@ export const Header = React.memo(() => {
 
   return (
     <header className="w-full bg-base-white">
-      <div className="flex flex-wrap items-center justify-between gap-x4 px-x6 py-x4 md:px-x6 md:py-x4">
-        <div className="flex items-center gap-x3 md:gap-x6">
-          <div className="flex items-center gap-x2 md:gap-x3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-x2 bg-base-black md:h-x10 md:w-x10">
-              <span className="font-display text-lg leading-[1em] text-base-white md:text-[1.5rem] md:leading-[1.5rem]">I</span>
+      <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-4 md:px-6 md:py-4">
+        <div className="flex items-center gap-3 md:gap-6">
+          <div className="flex items-center gap-2 md:gap-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded bg-base-black md:h-10 md:w-10">
+              <span className="font-display text-lg leading-none text-base-white md:text-xl md:leading-6">I</span>
             </div>
-            <span className="font-display text-lg leading-[1em] text-base-black md:text-[1.5rem] md:leading-[1.5rem]">
+            <span className="font-display text-lg leading-none text-base-black md:text-xl md:leading-6">
               Iuris
             </span>
           </div>
 
-          <nav className="hidden items-center gap-x1 md:flex md:gap-x2">
+          <nav className="hidden items-center gap-1 md:flex md:gap-2">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;
@@ -93,8 +93,8 @@ export const Header = React.memo(() => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative flex items-center gap-x1 px-x2 py-x2 text-sm font-sans font-normal leading-[1.25em] transition-colors md:gap-x2 md:text-[1rem] md:leading-[1.25rem] ${
-                    buttonSize === "md" ? "px-x3 py-[10px]" : "px-x3 py-x3"
+                  className={`relative flex items-center gap-1 px-2 py-2 text-sm font-sans font-normal leading-5 transition-colors md:gap-2 md:text-base md:leading-5 ${
+                    buttonSize === "md" ? "px-3 py-2.5" : "px-3 py-3"
                   } ${
                     isActive
                       ? "text-base-black"
@@ -104,7 +104,7 @@ export const Header = React.memo(() => {
                   <Icon size={20} weight="regular" />
                   <span className="hidden lg:inline">{item.label}</span>
                   {item.badge && (
-                    <span className="flex h-x6 w-x6 items-center justify-center rounded-x1000 bg-red-700 text-[0.75rem] font-sans font-bold leading-[0.75rem] text-base-white">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red-700 text-xs font-sans font-bold leading-3 text-base-white">
                       {item.badge}
                     </span>
                   )}
@@ -117,7 +117,7 @@ export const Header = React.memo(() => {
           </nav>
         </div>
 
-        <div className="flex flex-wrap items-center gap-x2 md:gap-x4">
+        <div className="flex flex-wrap items-center gap-2 md:gap-4">
           <Button
             variant="fill"
             theme="primary"
@@ -126,7 +126,7 @@ export const Header = React.memo(() => {
           />
           <div className="h-12 w-px bg-gray-300" />
           <div
-            className="profile-dropdown-container relative flex items-start gap-x3 cursor-pointer"
+            className="profile-dropdown-container relative flex items-start gap-3 cursor-pointer"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
             <img
@@ -135,10 +135,10 @@ export const Header = React.memo(() => {
               className="h-12 w-12 rounded-full object-cover"
             />
             <div className="flex flex-col gap-1">
-              <span className="font-sans text-[1.25rem] font-medium leading-[1.5rem] text-base-black">
+              <span className="font-sans text-lg font-medium leading-6 text-base-black">
                 Guilherme
               </span>
-              <span className="font-sans text-[1rem] font-normal leading-[1.25rem] text-gray-600">
+              <span className="font-sans text-base font-normal leading-5 text-gray-600">
                 Plano gratuito
               </span>
             </div>
@@ -147,12 +147,12 @@ export const Header = React.memo(() => {
             </div>
             {isDropdownOpen && (
               <div
-                className="absolute right-0 top-full z-50 mt-x2 w-48 rounded-x2 border border-gray-300 bg-base-white shadow-lg"
+                className="absolute right-0 top-full z-50 mt-2 w-48 rounded border border-gray-300 bg-base-white shadow-lg"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
                   type="button"
-                  className="flex w-full items-center gap-x2 px-x4 py-[15px] text-left font-sans text-[0.75rem] font-normal leading-[1.125rem] text-gray-800 hover:bg-gray-100"
+                  className="flex w-full items-center gap-2 px-4 py-3 text-left font-sans text-xs font-normal leading-[18px] text-gray-800 hover:bg-gray-100"
                   onClick={() => {
                     setIsDropdownOpen(false);
                     router.push("/configuracoes");
@@ -163,7 +163,7 @@ export const Header = React.memo(() => {
                 </button>
                 <button
                   type="button"
-                  className="flex w-full items-center gap-x2 px-x4 py-[15px] text-left font-sans text-[0.75rem] font-normal leading-[1.125rem] text-gray-800 hover:bg-gray-100"
+                  className="flex w-full items-center gap-2 px-4 py-3 text-left font-sans text-xs font-normal leading-[18px] text-gray-800 hover:bg-gray-100"
                   onClick={() => {
                     setIsDropdownOpen(false);
                   }}
@@ -173,7 +173,7 @@ export const Header = React.memo(() => {
                 </button>
                 <button
                   type="button"
-                  className="flex w-full items-center gap-x2 px-x4 py-[15px] text-left font-sans text-[0.75rem] font-normal leading-[1.125rem] text-red-600 hover:bg-gray-100"
+                  className="flex w-full items-center gap-2 px-4 py-3 text-left font-sans text-xs font-normal leading-[18px] text-red-600 hover:bg-gray-100"
                   onClick={() => {
                     setIsDropdownOpen(false);
                   }}
