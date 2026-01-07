@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -12,6 +12,10 @@ import { useMeetingRequests } from "@/contexts/MeetingRequestsContext";
 export default function Home() {
   const { getNewRequestsCount } = useMeetingRequests();
   const newRequestsCount = getNewRequestsCount();
+
+  useEffect(() => {
+    document.title = "Página inicial | Iuris";
+  }, []);
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_25rem]">

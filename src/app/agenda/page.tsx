@@ -1,3 +1,9 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Agenda",
+};
+
 export default function AgendaPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Tabs } from "@/components/Tabs";
 import { Badge } from "@/components/Badge";
 import { Button } from "@/components/Button";
@@ -8,6 +8,9 @@ import { Pill } from "@/components/Pill";
 import { CreditCard, CurrencyCircleDollar, User, Eye, EyeSlash, Download } from "@phosphor-icons/react";
 
 export default function ConfiguracoesPage() {
+  useEffect(() => {
+    document.title = "Configurações | Iuris";
+  }, []);
   const [activeTab, setActiveTab] = useState<string>("plano-pagamento");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   

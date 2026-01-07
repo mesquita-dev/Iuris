@@ -15,6 +15,7 @@ import {
 } from "@phosphor-icons/react";
 import { Button } from "@/components/Button";
 import { useMeetingRequests } from "@/contexts/MeetingRequestsContext";
+import { useUser } from "@/contexts/UserContext";
 
 interface NavItem {
   href: string;
@@ -36,6 +37,7 @@ export const Header = React.memo(() => {
   const [buttonSize, setButtonSize] = useState<"lg" | "md">("lg");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { getNewRequestsCount } = useMeetingRequests();
+  const { user } = useUser();
   const newRequestsCount = getNewRequestsCount();
   const navItems = getNavItems(newRequestsCount);
 
@@ -130,16 +132,16 @@ export const Header = React.memo(() => {
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
             <img
-              src="/api/placeholder/48/48"
+              src={user.profileImage || "/api/placeholder/48/48"}
               alt="Foto de perfil"
               className="h-12 w-12 rounded-full object-cover"
             />
             <div className="flex flex-col gap-1">
               <span className="font-sans text-lg font-medium leading-6 text-base-black">
-                Guilherme
+                {user.name.split(" ")[0]}
               </span>
               <span className="font-sans text-base font-normal leading-5 text-gray-600">
-                Plano gratuito
+                {user.plan}
               </span>
             </div>
             <div className="flex items-center justify-center">

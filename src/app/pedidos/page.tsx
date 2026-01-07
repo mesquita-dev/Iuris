@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CalendarDots, Monitor, Building, CaretDown } from "@phosphor-icons/react";
 import { Pill } from "@/components/Pill";
 import { Button } from "@/components/Button";
@@ -14,6 +14,10 @@ export default function PedidosPage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { meetingRequests, getNewRequestsCount } = useMeetingRequests();
   const newRequestsCount = getNewRequestsCount();
+
+  useEffect(() => {
+    document.title = "Pedidos de reunião | Iuris";
+  }, []);
 
   const handleFilterChange = (status: StatusFilter, checked: boolean) => {
     if (checked) {
