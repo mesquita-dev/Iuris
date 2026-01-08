@@ -160,21 +160,23 @@ export default function Home() {
                   </p>
                 </div>
               ) : slot.hasMeeting ? (
-                <div className="flex flex-1 flex-col gap-1 rounded border border-blue-300 bg-blue-100 px-3 py-2">
-                  <p className="font-sans text-sm font-medium leading-5 text-blue-800">
+                <div className="flex flex-1 flex-col gap-1 rounded border border-blue-300 bg-blue-800 px-3 py-2">
+                  <p className="font-sans text-sm font-medium leading-5 text-base-white">
                     Cancelamento/Reembolso
                   </p>
                   <div className="flex gap-4">
-                    <time className="font-sans text-xs font-normal leading-4 text-blue-800">
+                    <time className="font-sans text-xs font-normal leading-4 text-gray-200">
                       Ter, 23 Jan 08:00 - 09:00
                     </time>
-                    <p className="font-sans text-xs font-normal leading-4 text-blue-800">
+                    <p className="font-sans text-xs font-normal leading-4 text-gray-200">
                       Presencial
                     </p>
                   </div>
                 </div>
               ) : (
-                <div className="h-8 flex-1 self-center border-b border-gray-200" />
+                <div className="flex h-8 w-full items-center">
+                  <div className="w-full border-b border-gray-200" />
+                </div>
               )}
             </div>
           ))}

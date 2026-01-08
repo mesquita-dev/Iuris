@@ -59,7 +59,7 @@ export default function PedidosPage() {
     <div className="bg-base-white p-4 rounded">
         <div className="flex items-center justify-between flex-wrap gap-4 mb-4">
           <div className="flex items-center gap-3">
-            <h1 className="font-sans text-xl font-semibold leading-8 text-base-black">
+            <h1 className="font-sans text-2xl font-semibold leading-8 text-base-black">
               Pedidos de reunião
             </h1>
             {newRequestsCount > 0 && (
