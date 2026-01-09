@@ -35,6 +35,7 @@ export const Header = React.memo(() => {
   const pathname = usePathname();
   const router = useRouter();
   const [buttonSize, setButtonSize] = useState<"lg" | "md">("lg");
+  const [iconSize, setIconSize] = useState<16 | 20>(16);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { getNewRequestsCount } = useMeetingRequests();
   const { user } = useUser();
@@ -47,6 +48,11 @@ export const Header = React.memo(() => {
         setButtonSize("md");
       } else {
         setButtonSize("lg");
+      }
+      if (window.innerWidth < 1536) {
+        setIconSize(16);
+      } else {
+        setIconSize(20);
       }
     };
 
@@ -75,13 +81,13 @@ export const Header = React.memo(() => {
 
   return (
     <header className="w-full bg-base-white">
-      <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-4 md:px-6 md:py-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4">
         <div className="flex items-center gap-3 md:gap-6">
           <div className="flex items-center gap-2 md:gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded bg-base-black md:h-10 md:w-10">
-              <span className="font-display text-lg leading-none text-base-white md:text-xl md:leading-6">I</span>
+            <div className="flex h-8 w-8 items-center justify-center rounded bg-base-black">
+              <span className="font-display text-sm leading-none text-base-white 2xl:text-lg 2xl:leading-6">I</span>
             </div>
-            <span className="font-display text-lg leading-none text-base-black md:text-xl md:leading-6">
+            <span className="font-display text-xl leading-none text-base-black 2xl:leading-6">
               Iuris
             </span>
           </div>
@@ -95,15 +101,13 @@ export const Header = React.memo(() => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative flex items-center gap-1 px-2 py-2 text-sm font-sans font-normal leading-5 transition-colors md:gap-2 md:text-base md:leading-5 ${
-                    buttonSize === "md" ? "px-3 py-2.5" : "px-3 py-3"
-                  } ${
+                  className={`relative flex items-center gap-1 p-2.5 text-sm font-sans font-normal leading-5 transition-colors md:gap-2 2xl:text-base 2xl:leading-5 ${
                     isActive
                       ? "text-base-black"
                       : "text-gray-600 hover:text-base-black"
                   }`}
                 >
-                  <Icon size={20} weight="regular" />
+                  <Icon size={iconSize} weight="regular" />
                   <span className="hidden lg:inline">{item.label}</span>
                   {item.badge && (
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red-700 text-xs font-sans font-bold leading-3 text-base-white">
@@ -126,7 +130,7 @@ export const Header = React.memo(() => {
             size="lg"
             label="Copiar link do perfil"
           />
-          <div className="h-12 w-px bg-gray-300" />
+          <div className="h-10 w-px bg-gray-300 2xl:h-12" />
           <div
             className="profile-dropdown-container relative flex items-start gap-3 cursor-pointer"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -134,18 +138,18 @@ export const Header = React.memo(() => {
             <img
               src={user.profileImage || "/api/placeholder/48/48"}
               alt="Foto de perfil"
-              className="h-12 w-12 rounded-full object-cover"
+              className="h-10 w-10 rounded-full object-cover"
             />
-            <div className="flex flex-col gap-1">
-              <span className="font-sans text-lg font-medium leading-6 text-base-black">
+            <div className="flex flex-col gap-0.5 2xl:gap-1">
+              <span className="font-sans text-sm font-medium leading-[18px] text-base-black 2xl:text-base 2xl:leading-6">
                 {user.name.split(" ")[0]}
               </span>
-              <span className="font-sans text-base font-normal leading-5 text-gray-600">
+              <span className="font-sans text-xs font-normal leading-5 text-gray-600">
                 {user.plan}
               </span>
             </div>
             <div className="flex items-center justify-center">
-              <CaretDown size={20} weight="regular" className="text-gray-600" />
+              <CaretDown size={iconSize} weight="regular" className="text-gray-600" />
             </div>
             {isDropdownOpen && (
               <div

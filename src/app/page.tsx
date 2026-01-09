@@ -21,17 +21,17 @@ export default function Home() {
 
   return (
     <div className="grid grid-cols-1 gap-2 lg:grid-cols-[1fr_22rem]">
-      <div className="flex flex-col gap-6">
-        <h1 className="font-sans text-[32px] font-bold leading-8 tracking-[-0.02em] text-base-black">
+      <div className="flex flex-col gap-2 2xl:gap-6">
+        <h1 className="font-sans text-3xl font-bold leading-8 tracking-[-0.02em] text-base-black">
           Seja bem-vindo, Guilherme
         </h1>
 
-        <div className="flex flex-col gap-4 rounded bg-base-white p-5 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col gap-1 max-w-[600px] 2xl:max-w-[1000px]">
+        <div className="flex flex-col gap-4 rounded border bg-base-white p-5 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-1 max-w-[630px] 2xl:max-w-[1000px]">
             <h2 className="font-sans text-lg font-medium leading-7 text-base-black">
               Complete o seu perfil
             </h2>
-            <p className="font-sans text-[16px] font-normal leading-5 text-gray-600">
+            <p className="font-sans text-sm 2xl:text-base font-normal leading-5 text-gray-600">
               Você preencheu 80% da informações mas ainda faltam algumas para
               enriquecer o seu perfil
             </p>
@@ -51,7 +51,7 @@ export default function Home() {
               <h2 className="font-sans text-lg font-medium leading-7 text-base-black">
                 Novos pedidos
               </h2>
-              <p className="font-sans text-[16px] font-normal leading-5 text-gray-600">
+                <p className="font-sans text-sm 2xl:text-base font-normal leading-5 text-gray-600">
                 Não deixe seus possíveis clientes esperando.
               </p>
             </div>
