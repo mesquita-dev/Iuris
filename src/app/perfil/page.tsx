@@ -165,10 +165,10 @@ export default function PerfilPage() {
   return (
     <div className="bg-base-white p-4 rounded">
       <div className="mb-6">
-        <h1 className="mb-2 font-sans text-2xl font-semibold leading-10 text-base-black">
+        <h1 className="mb-2 font-sans text-xl sm:text-2xl font-semibold leading-8 sm:leading-10 text-base-black">
           Personalize o seu perfil
         </h1>
-        <p className="font-sans text-base font-normal leading-5 text-gray-600">
+        <p className="font-sans text-sm sm:text-base font-normal leading-5 text-gray-600">
           Essa é uma parte bem importante, é aqui onde você criará o seu perfil para as pessoas.
         </p>
       </div>
@@ -505,11 +505,11 @@ export default function PerfilPage() {
       </div>
 
       <div className="my-12">
-        <div className="mb-4 flex items-center gap-2">
-          <h2 className="font-sans text-xl font-semibold leading-8 text-base-black">
+        <div className="mb-4 flex items-center gap-2 flex-wrap">
+          <h2 className="font-sans text-lg sm:text-xl font-semibold leading-8 text-base-black">
             Formação acadêmica
           </h2>
-          <span className="font-sans text-base font-normal leading-5 text-gray-600">
+          <span className="font-sans text-sm sm:text-base font-normal leading-5 text-gray-600">
             (máximo de até 3 formações)
           </span>
         </div>
@@ -645,10 +645,10 @@ export default function PerfilPage() {
       </div>
 
       <div className="my-12">
-        <h2 className="font-sans text-xl font-semibold leading-8 text-base-black">
+        <h2 className="font-sans text-lg sm:text-xl font-semibold leading-8 text-base-black">
           Selecione as áreas de atuação *
         </h2>
-        <p className="mt-2 mb-4 font-sans text-base font-normal leading-5 text-gray-600">
+        <p className="mt-2 mb-4 font-sans text-sm sm:text-base font-normal leading-5 text-gray-600">
           Selecione apenas áreas em que você atua regularmente. Máximo de 3 áreas de atuação.
         </p>
         <div className="flex flex-wrap gap-4">

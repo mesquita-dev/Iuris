@@ -59,7 +59,7 @@ export default function PedidosPage() {
     <div className="bg-base-white p-4 rounded">
         <div className="flex items-center justify-between flex-wrap gap-4 mb-4">
           <div className="flex items-center gap-3">
-            <h1 className="font-sans text-2xl font-semibold leading-8 text-base-black">
+            <h1 className="font-sans text-xl sm:text-2xl font-semibold leading-8 text-base-black">
               Pedidos de reunião
             </h1>
             {newRequestsCount > 0 && (
@@ -81,10 +81,10 @@ export default function PedidosPage() {
         </div>
 
         <div>
-          <p className="font-sans text-base font-normal leading-5 text-base-black pb-3">
+          <p className="font-sans text-sm sm:text-base font-normal leading-5 text-base-black pb-3">
             Status
           </p>
-          <div className="flex items-center gap-4 flex-wrap mb-6">
+          <div className="flex items-center gap-2 sm:gap-4 flex-wrap mb-6">
             <Pill
               version="checkbox"
               label={`Novos (${getStatusCount("novos")})`}
@@ -110,7 +110,7 @@ export default function PedidosPage() {
             {filteredRequests.map((request) => (
               <div
                 key={request.id}
-                className="flex flex-col p-4 border border-gray-300 rounded bg-base-white w-full md:max-w-[calc(50%-8px)] lg:max-w-[calc(25%-12px)]"
+                className="flex flex-col p-4 border border-gray-300 rounded bg-base-white w-full sm:max-w-[calc(50%-8px)] lg:max-w-[calc(33.333%-11px)] xl:max-w-[calc(25%-12px)]"
               >
                 <div className="flex items-center justify-between mb-5">
                   <div>{getStatusBadge(request.status)}</div>
@@ -142,7 +142,7 @@ export default function PedidosPage() {
                   <p className="font-sans text-sm font-medium leading-[18px] text-gray-600">
                     Assunto
                   </p>
-                  <h2 className="font-sans text-xl font-medium leading-7 text-base-black">
+                  <h2 className="font-sans text-lg sm:text-xl font-medium leading-7 text-base-black">
                     {request.subject}
                   </h2>
                 </div>
@@ -150,8 +150,8 @@ export default function PedidosPage() {
                   <p className="font-sans text-sm font-medium leading-[18px] text-gray-600">
                     Solicitante
                   </p>
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-sans text-xl font-medium leading-7 text-base-black">
+                  <div className="flex items-center justify-between flex-wrap gap-2">
+                    <h3 className="font-sans text-lg sm:text-xl font-medium leading-7 text-base-black">
                       {request.requester}
                     </h3>
                     {request.isFirstContact && (
@@ -162,7 +162,7 @@ export default function PedidosPage() {
                   </div>
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex gap-2 sm:gap-4 flex-wrap">
                   {request.status === "novo" && (
                     <>
                       <Button

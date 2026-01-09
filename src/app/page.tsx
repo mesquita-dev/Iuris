@@ -4,6 +4,8 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
+  Copy,
+  Info,
 } from "@phosphor-icons/react";
 import { Button } from "@/components/Button";
 import { Badge } from "@/components/Badge";
@@ -18,18 +20,18 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_25rem]">
+    <div className="grid grid-cols-1 gap-2 lg:grid-cols-[1fr_22rem]">
       <div className="flex flex-col gap-6">
-        <h1 className="font-sans text-[2.5rem] font-bold leading-[3rem] tracking-[-0.02em] text-base-black">
+        <h1 className="font-sans text-[32px] font-bold leading-8 tracking-[-0.02em] text-base-black">
           Seja bem-vindo, Guilherme
         </h1>
 
         <div className="flex flex-col gap-4 rounded bg-base-white p-5 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col gap-1">
-            <h2 className="font-sans text-2xl font-medium leading-7 text-base-black">
+          <div className="flex flex-col gap-1 max-w-[600px] 2xl:max-w-[1000px]">
+            <h2 className="font-sans text-lg font-medium leading-7 text-base-black">
               Complete o seu perfil
             </h2>
-            <p className="font-sans text-base font-normal leading-5 text-gray-600">
+            <p className="font-sans text-[16px] font-normal leading-5 text-gray-600">
               Você preencheu 80% da informações mas ainda faltam algumas para
               enriquecer o seu perfil
             </p>
@@ -43,18 +45,18 @@ export default function Home() {
           />
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
           <div className="flex flex-col justify-between gap-4 rounded border bg-base-white p-4">
             <div className="flex flex-col gap-1">
-              <h2 className="font-sans text-2xl font-medium leading-7 text-base-black">
+              <h2 className="font-sans text-lg font-medium leading-7 text-base-black">
                 Novos pedidos
               </h2>
-              <p className="font-sans text-base font-normal leading-5 text-gray-600">
+              <p className="font-sans text-[16px] font-normal leading-5 text-gray-600">
                 Não deixe seus possíveis clientes esperando.
               </p>
             </div>
-            <div className="flex items-center justify-between">
-              <h3 className="font-sans text-[4rem] font-bold leading-[4.5rem] text-base-black">
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <h3 className="font-sans text-5xl font-bold leading-tight text-base-black">
                 {newRequestsCount}
               </h3>
               <Link href="/pedidos">
@@ -71,33 +73,33 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col justify-between gap-4 rounded border bg-base-white p-4">
-            <h2 className="font-sans text-2xl font-medium leading-7 text-base-black">
+            <h2 className="font-sans text-lg font-medium leading-7 text-base-black">
               Reuniões nos próximos 7 dias
             </h2>
-            <h3 className="font-sans text-[4rem] font-bold leading-[4.5rem] text-base-black">
+            <h3 className="font-sans text-5xl font-bold leading-tight text-base-black">
               64
             </h3>
           </div>
 
-          <div className="flex flex-col gap-8 rounded border bg-base-white p-4">
-            <h2 className="font-sans text-2xl font-medium leading-7 text-base-black">
+          <div className="flex flex-col gap-6 rounded border bg-base-white p-4">
+            <h2 className="font-sans text-lg font-medium leading-7 text-base-black">
               Próxima reunião
             </h2>
             <div className="flex flex-col gap-2">
-              <p className="font-sans text-base leading-5 text-base-black">
-                <span className="font-normal text-gray-600">Assunto: </span>
-                <span className="font-medium">Cancelamento/Reembolso</span>
+              <p className="font-sans text-sm sm:text-base leading-5 text-base-black">
+                <span className="text-sm font-normal text-gray-600">Assunto: </span>
+                <span className="text-sm font-medium">Cancelamento/Reembolso</span>
               </p>
-              <p className="font-sans text-base leading-5 text-base-black">
-                <span className="font-normal text-gray-600">Solicitante: </span>
-                <span className="font-medium">Lucas Mesquita</span>
+              <p className="font-sans text-sm sm:text-base leading-5 text-base-black">
+                <span className="text-sm font-normal text-gray-600">Solicitante: </span>
+                <span className="text-sm font-medium">Lucas Mesquita</span>
               </p>
-              <p className="font-sans text-base leading-5 text-base-black">
-                <span className="font-normal text-gray-600">Horário e modalidade: </span>
-                <span className="font-medium">Hoje, 09:00 - 10:00 • Online</span>
+              <p className="font-sans text-sm sm:text-base leading-5 text-base-black">
+                <span className="text-sm font-normal text-gray-600">Horário e modalidade: </span>
+                <span className="text-sm font-medium">Hoje, 09:00 - 10:00 • Online</span>
               </p>
             </div>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
                 <Button
                   variant="fill"
                   theme="primary"
@@ -109,14 +111,18 @@ export default function Home() {
                   variant="outline"
                   theme="primary"
                   size="lg"
-                  label="Copiar link"
+                  label=""
+                  customIconLeft={Copy}
+                  hasIconLeft={true}
                   className="w-fit"
                 />
                 <Button
                   variant="ghost"
                   theme="primary"
                   size="lg"
-                  label="Detalhes"
+                  label=""
+                  customIconLeft={Info}
+                  hasIconLeft={true}
                   className="w-fit"
                 />
             </div>
@@ -126,10 +132,10 @@ export default function Home() {
 
       <aside className="flex flex-col gap-4 rounded border bg-base-white p-4">
         <div className="flex items-center justify-between">
-          <h2 className="font-sans text-xl font-semibold leading-8 text-base-black">
+          <h2 className="font-sans text-lg font-medium leading-7 text-base-black">
             Agenda de hoje
           </h2>
-          <time className="font-sans text-base font-normal leading-6 text-gray-600">
+          <time className="font-sans text-sm sm:text-base font-normal leading-6 text-gray-600">
             29/12
           </time>
         </div>

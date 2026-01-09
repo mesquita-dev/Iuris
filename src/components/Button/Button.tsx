@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Check } from "@phosphor-icons/react";
 
 type ButtonVariant = "fill" | "outline" | "ghost";
@@ -71,7 +71,28 @@ export const Button = React.memo<ButtonProps>(
     className = "",
     ...props
   }) => {
-    const buttonClasses = getButtonClasses(variant, theme, size);
+    const [actualSize, setActualSize] = useState<ButtonSize>(size);
+
+    useEffect(() => {
+      if (size === "lg") {
+        const checkScreenSize = () => {
+          if (window.innerWidth >= 1536) {
+            setActualSize("lg");
+          } else {
+            setActualSize("md");
+          }
+        };
+
+        checkScreenSize();
+        window.addEventListener("resize", checkScreenSize);
+
+        return () => window.removeEventListener("resize", checkScreenSize);
+      } else {
+        setActualSize(size);
+      }
+    }, [size]);
+
+    const buttonClasses = getButtonClasses(variant, theme, actualSize);
     const LeftIcon = customIconLeft || (hasIconLeft && iconLeft ? Check : null);
     const RightIcon = customIconRight || (hasIconRight && iconRight ? Check : null);
     
