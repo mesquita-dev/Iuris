@@ -11,8 +11,9 @@ export interface SelectOption {
 }
 
 export interface SelectProps
-  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "placeholder"> {
+  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "placeholder" | "size"> {
   state?: SelectState;
+  size?: "lg" | "md";
   label: string;
   icon?: "Info";
   hasIcon?: boolean;
@@ -23,10 +24,14 @@ export interface SelectProps
 
 const getSelectClasses = (
   state: SelectState,
-  isFocused: boolean
+  isFocused: boolean,
+  size: "lg" | "md" = "lg"
 ): string => {
+  const heightClasses = size === "lg" ? "h-12" : "h-10";
+  const paddingClasses = size === "lg" ? "px-3 py-3" : "px-3 py-2";
+  const textClasses = size === "lg" ? "text-base leading-5" : "text-sm leading-5";
   const baseClasses =
-    `w-full px-3 py-3 font-sans font-normal text-base leading-5 rounded border transition-colors outline-none appearance-none pr-10`;
+    `w-full ${heightClasses} ${paddingClasses} font-sans font-normal ${textClasses} rounded border transition-colors outline-none appearance-none pr-10`;
 
   if (state === "disabled") {
     return `${baseClasses} border-gray-300 bg-gray-200 text-gray-500 cursor-not-allowed`;
@@ -46,6 +51,7 @@ const getSelectClasses = (
 export const Select = React.memo<SelectProps>(
   ({
     state = "default",
+    size = "lg",
     label,
     icon = "Info",
     hasIcon = false,
@@ -60,7 +66,7 @@ export const Select = React.memo<SelectProps>(
   }) => {
     const [isFocused, setIsFocused] = useState(false);
     const selectState = disabled ? "disabled" : state;
-    const selectClasses = getSelectClasses(selectState, isFocused);
+    const selectClasses = getSelectClasses(selectState, isFocused, size);
     const IconComponent = hasIcon && icon === "Info" ? Info : null;
 
     const handleFocus = (e: React.FocusEvent<HTMLSelectElement>) => {
@@ -76,12 +82,16 @@ export const Select = React.memo<SelectProps>(
     return (
       <div className="relative h-fit w-full min-w-fit">
         {hasHeading && (
-          <div className="mb-3 flex h-5 items-center justify-between gap-3">
-            <label className="font-sans text-base font-medium leading-5 text-gray-800 whitespace-nowrap">
+          <div className="mb-2 2xl:mb-3 flex h-5 items-center justify-between gap-3">
+            <label className={`font-sans font-medium whitespace-nowrap ${
+              size === "lg" 
+                ? "text-base leading-5 text-gray-800" 
+                : "text-sm leading-[18px] text-gray-800"
+            }`}>
               {label}
             </label>
             {IconComponent && (
-              <IconComponent size={20} weight="regular" className="text-gray-600" />
+              <IconComponent size={size === "lg" ? 20 : 16} weight="regular" className="text-gray-600" />
             )}
           </div>
         )}
@@ -93,17 +103,17 @@ export const Select = React.memo<SelectProps>(
             onBlur={handleBlur}
             {...props}
           >
-            <option value="" disabled>
+            <option value="" disabled className={size === "md" ? "text-gray-600" : ""}>
               {placeholder}
             </option>
             {options.map((option) => (
-              <option key={option.value} value={option.value}>
+              <option key={option.value} value={option.value} className={size === "md" ? "text-base-black" : ""}>
                 {option.label}
               </option>
             ))}
           </select>
           <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2">
-            <CaretDown size={20} weight="regular" className="text-gray-600" />
+            <CaretDown size={size === "lg" ? 20 : 16} weight="regular" className="text-gray-600" />
           </div>
         </div>
       </div>

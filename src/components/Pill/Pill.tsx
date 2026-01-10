@@ -8,6 +8,7 @@ type PillVersion = "radio" | "checkbox";
 
 export interface PillProps {
   state?: PillState;
+  size?: "lg" | "md";
   version: PillVersion;
   label: string;
   name?: string;
@@ -17,8 +18,11 @@ export interface PillProps {
   disabled?: boolean;
 }
 
-const getPillClasses = (state: PillState): string => {
-  const baseClasses = "inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-sans text-base font-normal leading-5 transition-colors w-fit whitespace-nowrap box-border";
+const getPillClasses = (state: PillState, size: "lg" | "md" = "lg"): string => {
+  const heightClasses = size === "lg" ? "" : "h-10";
+  const paddingClasses = size === "lg" ? "px-6 py-3.5" : "px-6 py-2.5";
+  const textClasses = size === "lg" ? "text-base leading-5" : "text-sm leading-5";
+  const baseClasses = `inline-flex items-center gap-2 ${heightClasses} ${paddingClasses} rounded-full font-sans ${textClasses} font-normal transition-colors w-fit whitespace-nowrap box-border`;
 
   if (state === "active") {
     return `${baseClasses} bg-base-white border border-base-black text-base-black`;
@@ -54,6 +58,7 @@ const getRadioClasses = (isSelected: boolean): string => {
 export const Pill = React.memo<PillProps>(
   ({
     state = "default",
+    size = "lg",
     version,
     label,
     name,
@@ -63,7 +68,7 @@ export const Pill = React.memo<PillProps>(
     disabled,
   }) => {
     const visualState = checked !== undefined ? (checked ? "active" : "default") : state;
-    const pillClasses = getPillClasses(visualState);
+    const pillClasses = getPillClasses(visualState, size);
     const isChecked = checked !== undefined ? checked : state === "active";
     const inputId = `pill-${version}-${value || label}-${Math.random().toString(36).substr(2, 9)}`;
 

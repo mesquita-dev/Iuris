@@ -12,11 +12,30 @@ type StatusFilter = "novos" | "agendados" | "recusados";
 export default function PedidosPage() {
   const [statusFilter, setStatusFilter] = useState<StatusFilter[]>(["novos"]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [iconSize, setIconSize] = useState<20 | 24>(20);
+  const [pillSize, setPillSize] = useState<"lg" | "md">("md");
   const { meetingRequests, getNewRequestsCount } = useMeetingRequests();
   const newRequestsCount = getNewRequestsCount();
 
   useEffect(() => {
     document.title = "Pedidos de reunião | Iuris";
+  }, []);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      if (window.innerWidth < 1536) {
+        setIconSize(20);
+        setPillSize("md");
+      } else {
+        setIconSize(24);
+        setPillSize("lg");
+      }
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
   const handleFilterChange = (status: StatusFilter, checked: boolean) => {
@@ -87,18 +106,21 @@ export default function PedidosPage() {
           <div className="flex items-center gap-2 sm:gap-4 flex-wrap mb-6">
             <Pill
               version="checkbox"
+              size={pillSize}
               label={`Novos (${getStatusCount("novos")})`}
               checked={statusFilter.includes("novos")}
               onChange={(e) => handleFilterChange("novos", e.target.checked)}
             />
             <Pill
               version="checkbox"
+              size={pillSize}
               label={`Agendados (${getStatusCount("agendados")})`}
               checked={statusFilter.includes("agendados")}
               onChange={(e) => handleFilterChange("agendados", e.target.checked)}
             />
             <Pill
               version="checkbox"
+              size={pillSize}
               label={`Recusados (${getStatusCount("recusados")})`}
               checked={statusFilter.includes("recusados")}
               onChange={(e) => handleFilterChange("recusados", e.target.checked)}
@@ -110,29 +132,29 @@ export default function PedidosPage() {
             {filteredRequests.map((request) => (
               <div
                 key={request.id}
-                className="flex flex-col p-4 border border-gray-300 rounded bg-base-white w-full sm:max-w-[calc(50%-8px)] lg:max-w-[calc(33.333%-11px)] xl:max-w-[calc(25%-12px)]"
+                className="flex flex-col p-4 border border-gray-300 rounded bg-base-white w-full sm:max-w-[calc(50%-8px)] lg:max-w-[calc(33.333%-11px)] 2xl:max-w-[calc(25%-12px)]"
               >
-                <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center justify-between mb-4 2xl:mb-5">
                   <div>{getStatusBadge(request.status)}</div>
-                  <span className="font-sans text-base font-normal leading-5 text-gray-600">
+                  <span className="font-sans text-sm 2xl:text-base font-normal leading-5 text-gray-600">
                     {request.receivedAt || request.scheduledAt || request.rejectedAt}
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-5 2xl:mb-6">
                   <div className="flex items-center gap-2">
-                    <CalendarDots size={24} weight="regular" className="text-gray-600" />
-                    <span className="font-sans text-base font-medium leading-5 text-gray-600">
+                    <CalendarDots size={iconSize} weight="regular" className="text-gray-600" />
+                    <span className="font-sans text-sm 2xl:text-base font-medium leading-5 text-gray-600">
                       {request.dateTime}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
                     {request.meetingType === "online" ? (
-                      <Monitor size={24} weight="regular" className="text-gray-600" />
+                      <Monitor size={iconSize} weight="regular" className="text-gray-600" />
                     ) : (
-                      <Building size={24} weight="regular" className="text-gray-600" />
+                      <Building size={iconSize} weight="regular" className="text-gray-600" />
                     )}
-                    <span className="font-sans text-base font-medium leading-5 text-gray-600">
+                    <span className="font-sans text-sm 2xl:text-base font-medium leading-5 text-gray-600">
                       {request.meetingType === "online" ? "Online" : "Presencial"}
                     </span>
                   </div>
@@ -142,16 +164,16 @@ export default function PedidosPage() {
                   <p className="font-sans text-sm font-medium leading-[18px] text-gray-600">
                     Assunto
                   </p>
-                  <h2 className="font-sans text-lg sm:text-xl font-medium leading-7 text-base-black">
+                  <h2 className="font-sans text-lg font-medium leading-7 text-base-black">
                     {request.subject}
                   </h2>
                 </div>
-                <div className="flex flex-col gap-1 mb-8">
+                <div className="flex flex-col gap-1 mb-6 2xl:mb-8">
                   <p className="font-sans text-sm font-medium leading-[18px] text-gray-600">
                     Solicitante
                   </p>
                   <div className="flex items-center justify-between flex-wrap gap-2">
-                    <h3 className="font-sans text-lg sm:text-xl font-medium leading-7 text-base-black">
+                    <h3 className="font-sans text-lg font-medium leading-7 text-base-black">
                       {request.requester}
                     </h3>
                     {request.isFirstContact && (

@@ -34,9 +34,25 @@ export default function PerfilPage() {
   const [instituicao, setInstituicao] = useState<string>("");
   const [declaracao, setDeclaracao] = useState<boolean>(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [inputSize, setInputSize] = useState<"lg" | "md">("lg");
 
   useEffect(() => {
     document.title = "Meu perfil | Iuris";
+  }, []);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      if (window.innerWidth < 1536) {
+        setInputSize("md");
+      } else {
+        setInputSize("lg");
+      }
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
   const handleCepChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -206,10 +222,11 @@ export default function PerfilPage() {
           />
         </div>
 
-        <div className="flex flex-1 flex-wrap gap-6">
+        <div className="flex flex-1 flex-wrap gap-4 2xl:gap-6">
           <div className="w-full md:w-1/6 lg:w-1/6 min-w-fit">
             <Input
               state={errors.nome ? "error" : "default"}
+              size={inputSize}
               label="Nome completo *"
               placeholder="Ex: Lucas Mesquita"
               type="text"
@@ -232,6 +249,7 @@ export default function PerfilPage() {
           <div className="w-full md:w-1/8 lg:w-1/8 min-w-fit">
             <Input
               state={errors.numeroOAB ? "error" : "default"}
+              size={inputSize}
               label="Número da OAB *"
               placeholder="Ex: 80340"
               value={numeroOAB}
@@ -253,6 +271,7 @@ export default function PerfilPage() {
           <div className="w-full md:w-1/12 lg:w-1/12 min-w-fit">
             <Select
               state={errors.estadoOAB ? "error" : "default"}
+              size={inputSize}
               label="Estado da OAB *"
               placeholder="Ex: OAB"
               value={estadoOAB}
@@ -277,12 +296,17 @@ export default function PerfilPage() {
             )}
           </div>
           <div className="w-full md:w-auto lg:w-auto flex flex-col gap-3 min-w-fit">
-            <label className="font-sans text-base font-medium leading-5 text-gray-800 whitespace-nowrap">
+            <label className={`font-sans font-medium whitespace-nowrap ${
+              inputSize === "lg" 
+                ? "text-base leading-5 text-gray-800" 
+                : "text-sm leading-[18px] text-gray-800"
+            }`}>
               Tipo de atendimento *
             </label>
             <div className="flex gap-4 flex-wrap">
               <Pill
                 version="radio"
+                size={inputSize}
                 name="tipo-atendimento"
                 value="presencial"
                 label="Presencial"
@@ -300,6 +324,7 @@ export default function PerfilPage() {
               />
               <Pill
                 version="radio"
+                size={inputSize}
                 name="tipo-atendimento"
                 value="online"
                 label="Online"
@@ -317,6 +342,7 @@ export default function PerfilPage() {
               />
               <Pill
                 version="radio"
+                size={inputSize}
                 name="tipo-atendimento"
                 value="ambos"
                 label="Ambos"
@@ -340,6 +366,7 @@ export default function PerfilPage() {
           <div className="w-full md:w-1/8 lg:w-1/8 min-w-fit">
             <Input
               state={errors.cep ? "error" : "default"}
+              size={inputSize}
               label="CEP *"
               placeholder="Ex: 38080-140"
               value={cep}
@@ -362,6 +389,7 @@ export default function PerfilPage() {
           <div className="w-full md:w-1/5 lg:w-1/5 min-w-fit">
             <Input
               state={errors.logradouro ? "error" : "default"}
+              size={inputSize}
               label="Logradouro *"
               placeholder="Ex: Rua Álvaro Henrique"
               value={logradouro}
@@ -383,6 +411,7 @@ export default function PerfilPage() {
           <div className="w-full md:w-1/12 lg:w-1/12 min-w-fit">
             <Input
               state={errors.numero ? "error" : "default"}
+              size={inputSize}
               label="Número *"
               placeholder="Ex: 120"
               type="number"
@@ -405,6 +434,7 @@ export default function PerfilPage() {
           <div className="w-full md:w-1/8 lg:w-1/8 min-w-fit">
             <Input
               state="default"
+              size={inputSize}
               label="Complemento"
               placeholder="Ex: Uberaba"
               value={complemento}
@@ -414,6 +444,7 @@ export default function PerfilPage() {
           <div className="w-full md:w-1/6 lg:w-1/6 min-w-fit">
             <Input
               state={errors.bairro ? "error" : "default"}
+              size={inputSize}
               label="Bairro *"
               placeholder="Ex: Cássio Resende"
               value={bairro}
@@ -435,6 +466,7 @@ export default function PerfilPage() {
           <div className="w-full md:w-1/6 lg:w-1/6 min-w-fit">
             <Input
               state={errors.cidade ? "error" : "default"}
+              size={inputSize}
               label="Cidade *"
               placeholder="Ex: Uberaba"
               value={cidade}
@@ -456,6 +488,7 @@ export default function PerfilPage() {
           <div className="w-full md:w-1/12 lg:w-1/12 min-w-fit">
             <Select
               state={errors.estadoUF ? "error" : "default"}
+              size={inputSize}
               label="Estado (UF) *"
               placeholder="Ex: MG"
               value={estadoUF}
@@ -482,6 +515,7 @@ export default function PerfilPage() {
           <div className="w-full md:w-1/6 lg:w-1/6 min-w-fit">
             <Input
               state={errors.anoAtuacao ? "error" : "default"}
+              size={inputSize}
               label="Ano de início da atuação *"
               placeholder="Ex: 2020"
               value={anoAtuacao}
@@ -504,7 +538,7 @@ export default function PerfilPage() {
         </div>
       </div>
 
-      <div className="my-12">
+      <div className="my-10 2xl:my-12">
         <div className="mb-4 flex items-center gap-2 flex-wrap">
           <h2 className="font-sans text-lg sm:text-xl font-semibold leading-8 text-base-black">
             Formação acadêmica
@@ -513,9 +547,10 @@ export default function PerfilPage() {
             (máximo de até 3 formações)
           </span>
         </div>
-        <div className="flex flex-wrap gap-6 gap-y-4 items-start">
+        <div className="flex flex-wrap gap-4 gap-y-4 2xl:gap-6 items-start">
           <div className="w-full md:w-1/6 lg:w-1/6 min-w-fit">
             <Select
+              size={inputSize}
               label="Tipo *"
               hasHeading={true}
               placeholder=""
@@ -531,6 +566,7 @@ export default function PerfilPage() {
           </div>
           <div className="w-full md:w-1/4 lg:w-1/4 min-w-fit">
             <Input
+              size={inputSize}
               label="Título *"
               hasHeading={true}
               hasIcon={false}
@@ -542,6 +578,7 @@ export default function PerfilPage() {
           <div className="w-full md:w-1/4 lg:w-1/4 min-w-fit">
             <Input
               state={errors.instituicao ? "error" : "default"}
+              size={inputSize}
               label="Instituição *"
               hasHeading={true}
               placeholder="Ex: Universidade de Uberaba"
@@ -563,6 +600,7 @@ export default function PerfilPage() {
           </div>
           <div className="w-full md:w-1/12 lg:w-1/12 min-w-fit">
             <Input
+              size={inputSize}
               label="Ano de conclusão *"
               hasHeading={true}
               placeholder="Ex: 2022"
@@ -588,6 +626,7 @@ export default function PerfilPage() {
               <div className="w-full md:w-1/6 lg:w-1/6 min-w-fit">
                 <Select
                   state="default"
+                  size={inputSize}
                   label=""
                   hasHeading={false}
                   placeholder="Pós-graduação"
@@ -602,6 +641,7 @@ export default function PerfilPage() {
               <div className="w-full md:w-1/4 lg:w-1/4 min-w-fit">
                 <Input
                   state="default"
+                  size={inputSize}
                   label=""
                   hasHeading={false}
                   placeholder="Ex: Direito de Família e Sucessões"
@@ -610,6 +650,7 @@ export default function PerfilPage() {
               <div className="w-full md:w-1/4 lg:w-1/4 min-w-fit">
                 <Input
                   state="default"
+                  size={inputSize}
                   label=""
                   hasHeading={false}
                   placeholder="Ex: PUC Minas"
@@ -618,6 +659,7 @@ export default function PerfilPage() {
               <div className="w-full md:w-1/12 lg:w-1/12 min-w-fit">
                 <Input
                   state="default"
+                  size={inputSize}
                   label=""
                   hasHeading={false}
                   placeholder="Ex: 2024"
@@ -644,7 +686,7 @@ export default function PerfilPage() {
         </div>
       </div>
 
-      <div className="my-12">
+      <div className="mb-10 2xl:mb-12">
         <h2 className="font-sans text-lg sm:text-xl font-semibold leading-8 text-base-black">
           Selecione as áreas de atuação *
         </h2>
@@ -654,6 +696,7 @@ export default function PerfilPage() {
         <div className="flex flex-wrap gap-4">
           <Pill
             version="checkbox"
+            size={inputSize}
             value="direito-trabalho"
             label="Direito do trabalho"
             checked={areasAtuacao.includes("direito-trabalho")}
@@ -674,6 +717,7 @@ export default function PerfilPage() {
           />
           <Pill
             version="checkbox"
+            size={inputSize}
             value="direito-consumidor"
             label="Direito do consumidor"
             checked={areasAtuacao.includes("direito-consumidor")}
@@ -694,6 +738,7 @@ export default function PerfilPage() {
           />
           <Pill
             version="checkbox"
+            size={inputSize}
             value="direito-familia"
             label="Direito da família"
             checked={areasAtuacao.includes("direito-familia")}
@@ -720,7 +765,7 @@ export default function PerfilPage() {
 
       <div className="my-8 flex flex-col gap-2">
         <Checkbox
-          size="lg"
+          size={inputSize}
           label="Declaro que as informações seguem as normas do Código de Ética da OAB. *"
           checked={declaracao}
           onChange={(e) => {

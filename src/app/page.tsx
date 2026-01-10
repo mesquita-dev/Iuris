@@ -26,7 +26,7 @@ export default function Home() {
           Seja bem-vindo, Guilherme
         </h1>
 
-        <div className="flex flex-col gap-4 rounded border bg-base-white p-5 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-4 rounded border bg-base-white p-4 2xl:p-5 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-col gap-1 max-w-[630px] 2xl:max-w-[1000px]">
             <h2 className="font-sans text-lg font-medium leading-7 text-base-black">
               Complete o seu perfil
